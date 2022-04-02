@@ -1,4 +1,5 @@
 from Menu import Menu
+from Catalog import Catalog
 from Member import Member
 from Library_admin import Library_admin
 
@@ -18,4 +19,9 @@ def Main() -> None:
 
 
 if __name__ == '__main__':
-    Main()
+    # Main()
+    pass
+
+# ------- Testing -------
+Catalog.load_books()
+Catalog.print_books()

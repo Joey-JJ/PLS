@@ -27,12 +27,11 @@ class Menu:
             username = input('Username: ')
             password = input('Password: ')
             if username == admin_account.user_name and password == admin_account.password:
-                print('You are now logged in as admin')
+                print('You are now logged in as admin\n')
                 logged_in = True
             else:
-                print('Invalid username/password, please try again. To quit the application, enter \'quit\', else press enter')
+                print('\nInvalid username/password, please try again. To quit the application, enter \'quit\', else press enter')
                 quit = input()
                 if quit == 'quit':
                     break
-
         return 0
