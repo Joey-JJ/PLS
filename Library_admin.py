@@ -1,7 +1,7 @@
 from User_account import User_account
 
 
-class Admin_account(User_account):
+class Library_admin(User_account):
     def create_account(self):
         user_name = input('Enter the username: ')
         password = input('Enter the password: ')

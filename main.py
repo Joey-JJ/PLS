@@ -1,10 +1,10 @@
 from Menu import Menu
-from Members_account import Members_account
-from Admin_account import Admin_account
+from Member import Member
+from Library_admin import Library_admin
 
 
 def Main() -> None:
-    # admin = Admin_account('admin', 'admin123')
+    #  admin = Library_admin('admin', 'admin123')
     page_number = 0
     while(True):
         if page_number == 0:

@@ -1,7 +1,7 @@
 from User_account import User_account
 
 
-class Members_account(User_account):
+class Member(User_account):
     pass
 
     """
