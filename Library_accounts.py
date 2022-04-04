@@ -15,7 +15,7 @@ class Library_accounts:
 
     def search_member(member_number: int) -> object:
         for member in Library_accounts.members:
-            if member.number == member_number:
+            if member.number == str(member_number):
                 return member
         return False
 
@@ -40,7 +40,7 @@ class Library_accounts:
         
     def add_member() -> None:
         # TODO: SAVE CHANGES TO DATABASSE
-        number = int(input("Enter the number: "))
+        number = input("Enter the number: ")
         given_name = input("Enter the given name: ")
         surname = input("Enter the surname: ")
         street_address = input("Enter the street address: ")
@@ -57,15 +57,14 @@ class Library_accounts:
         print('Member added')
 
     def delete_member(member_number: int):
-        del_member = Library_accounts.search_member(str(member_number))
+        # TODO: SAVE CHANGES TO DATABASSE
+        del_member = Library_accounts.search_member(member_number)
         for member in Library_accounts.members:
             if member.number == del_member.number:
                 Library_accounts.members.remove(member)
                 return 4
         print('Could not find member')
         return 4
-        
-
     
     def edit_member(member_number: int) -> None:
         member = Library_accounts.search_member(member_number)

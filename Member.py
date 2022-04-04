@@ -4,6 +4,8 @@ from Person import Person
 class Member(Person):
     def __init__(self, number, given_name, surname, street_address, zipcode, city, email_address, username, password, telephone_number) -> None:
         super().__init__(number, given_name, surname, street_address, zipcode, city, email_address, username, password, telephone_number)
+        self.books_rented = []
+        self.num_rented = len(self.books_rented)
 
     """
     TODO: Functions to add

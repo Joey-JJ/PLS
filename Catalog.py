@@ -5,12 +5,12 @@ from Book import Book
 class Catalog(object):
     books = []
 
-    def load_books():
-        with open('Books.json', 'r') as f:
+    def load_books(filename: str):
+        with open(filename, 'r') as f:
             books_list = json.load(f)
         for book in books_list:
             book_properties = []
-            for key, value in book.items():
+            for value in book.values():
                 book_properties.append(value)
             Catalog.books.append(Book(
                 book_properties[0], 
@@ -28,3 +28,16 @@ class Catalog(object):
         for book in Catalog.books:
             print(f'{number}. {book.title} by {book.author}')
             number += 1
+    
+    def search():
+        query = input('Enter (part of) the book title or author: ')
+        results = []
+        for book in Catalog.books:
+            if query.lower() in book.title.lower() or query.lower() in book.title.lower():
+                results.append(book)
+        print('The following books were found: ')
+        if len(results) > 0:
+            for res in results:
+                print(f'"{res.title}" by {res.author}')
+        else:
+            print('None')
