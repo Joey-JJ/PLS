@@ -22,6 +22,4 @@ def Main() -> None:
 
 
 if __name__ == '__main__':
-    # Library_accounts.load_csv_members('Members.csv')
-    # Library_accounts.list_members()
-    pass
+    Main()

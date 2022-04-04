@@ -41,16 +41,24 @@ class Menu:
         return 0
 
     def admin_section() -> int:
-        user_input = input('What would you like to do?\n[1] See the current members\n[2] Add a new member\n[3] Edit a member [4] Log out and go back to the main menu\n')
-        if user_input == '1':
-            Library_accounts.list_members()
-            return  4
-        elif user_input == '2':
-            Library_accounts.add_member()
-            return 4
-        elif user_input == '3':
-            Library_accounts.edit_member('1')
-            return 4
-        elif user_input == '4':
-            print('Logging out ...\n')
-            return 0
+        while True:
+            user_input = input(
+                'What would you like to do?\n[1] See the current members\n[2] Add a new member\n[3] Edit a member\n\
+                [4] Import members from a CSV file\n[5] Log out and go back to the main menu\n')
+            if user_input == '1':
+                Library_accounts.list_members()
+                return  4
+            elif user_input == '2':
+                Library_accounts.add_member()
+                return 4
+            elif user_input == '3':
+                Library_accounts.edit_member('1')
+                return 4
+            elif user_input == '4':
+                filename = input('Enter the full name of the CSV file: ')
+                return Library_accounts.load_csv_members(filename)
+            elif user_input == '5':
+                print('Logging out ...\n')
+                return 0
+            else:
+                print('Please enter a valid number.')

@@ -7,10 +7,9 @@ class Library_accounts:
     
     def list_members() -> None:
         if len(Library_accounts.members) > 0:
-            print('\n')
             for member in Library_accounts.members:
                 print(f'{member.number}. {member.given_name} {member.surname}')
-            print('\n')
+            input('Press \'Enter\' to continue')
         else:
             print('There are no members at this point.')
 
@@ -23,14 +22,18 @@ class Library_accounts:
     def load_csv_members(filename: str):
         try:
             with open(filename) as file:
-                csv_file = csv.reader(file)
-                args = []
+                csv_file = csv.reader(file, delimiter=';')
                 for line in csv_file:
+                    member_data = []
                     for value in line:
-                        args.append(value)
-                        print(args)
-                    #Library_accounts.members.append(
-                    #   Member(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9]))
+                        if value == 'Number':
+                            break
+                        member_data.append(value)
+                    if len(member_data) > 0:
+                        Library_accounts.members.append(
+                            Member(member_data[0], member_data[1], member_data[2], member_data[3], member_data[4], member_data[5], member_data[6], member_data[7], member_data[8], member_data[9]))
+                print('Members saved\n')
+                return 4
         except FileNotFoundError:
             print('File not found, please try again.')
             return 4
