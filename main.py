@@ -20,6 +20,5 @@ def Main() -> None:
         elif page_number == 99:
             return
 
-
 if __name__ == '__main__':
     Main()

@@ -55,6 +55,17 @@ class Library_accounts:
 
         Library_accounts.members.append(new_member)
         print('Member added')
+
+    def delete_member(member_number: int):
+        del_member = Library_accounts.search_member(str(member_number))
+        for member in Library_accounts.members:
+            if member.number == del_member.number:
+                Library_accounts.members.remove(member)
+                return 4
+        print('Could not find member')
+        return 4
+        
+
     
     def edit_member(member_number: int) -> None:
         member = Library_accounts.search_member(member_number)
