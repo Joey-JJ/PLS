@@ -1,4 +1,5 @@
 from Member import Member
+import csv
 
 
 class Library_accounts:
@@ -18,6 +19,21 @@ class Library_accounts:
             if member.number == member_number:
                 return member
         return False
+
+    def load_csv_members(filename: str):
+        try:
+            with open(filename) as file:
+                csv_file = csv.reader(file)
+                args = []
+                for line in csv_file:
+                    for value in line:
+                        args.append(value)
+                        print(args)
+                    #Library_accounts.members.append(
+                    #   Member(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9]))
+        except FileNotFoundError:
+            print('File not found, please try again.')
+            return 4
         
     def add_member() -> None:
         # TODO: SAVE CHANGES TO DATABASSE

@@ -1,3 +1,4 @@
+from Library_accounts import Library_accounts
 from Menu import Menu
 from Catalog import Catalog
 from Member import Member
@@ -21,4 +22,6 @@ def Main() -> None:
 
 
 if __name__ == '__main__':
-    Main()
+    # Library_accounts.load_csv_members('Members.csv')
+    # Library_accounts.list_members()
+    pass
