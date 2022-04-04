@@ -29,6 +29,9 @@ class Menu:
             quit = input()
             if quit == 'quit':
                 return 0
+    
+    def member_section():
+        return 0
 
     def admin_login(admin_account: object) -> int:
         logged_in = False
@@ -36,7 +39,7 @@ class Menu:
             print('Please enter your log in details for your admin account...')
             username = input('Username: ')
             password = input('Password: ')
-            if username == admin_account.user_name and password == admin_account.password:
+            if username == admin_account.username and password == admin_account.password:
                 print('You are now logged in as admin\n')
                 logged_in = True
                 return 4

@@ -7,7 +7,7 @@ class Person(object):
         self.zipcode = zipcode
         self.city = city
         self.email_address = email_address
-        self.user_name = username
+        self.username = username
         self.password = password
         self.telephone_number = telephone_number
         
