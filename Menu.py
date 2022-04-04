@@ -1,3 +1,6 @@
+from Library_accounts import Library_accounts
+
+
 class Menu:
     """Static class for the menu pages"""
     def main_page() -> int:
@@ -29,9 +32,25 @@ class Menu:
             if username == admin_account.user_name and password == admin_account.password:
                 print('You are now logged in as admin\n')
                 logged_in = True
+                return 4
             else:
                 print('\nInvalid username/password, please try again. To quit the application, enter \'quit\', else press enter')
                 quit = input()
                 if quit == 'quit':
                     break
         return 0
+
+    def admin_section() -> int:
+        user_input = input('What would you like to do?\n[1] See the current members\n[2] Add a new member\n[3] Edit a member [4] Log out and go back to the main menu\n')
+        if user_input == '1':
+            Library_accounts.list_members()
+            return  4
+        elif user_input == '2':
+            Library_accounts.add_member()
+            return 4
+        elif user_input == '3':
+            Library_accounts.edit_member('1')
+            return 4
+        elif user_input == '4':
+            print('Logging out ...\n')
+            return 0

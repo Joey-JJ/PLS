@@ -1,18 +1,13 @@
-from ast import Pass
-from sympy import N
-
-
 class Person(object):
-    # Number;GivenName;Surname;StreetAddress;ZipCode;City;EmailAddress;Username;Password;TelephoneNumber
-    def __init__(self, Number, GivenName, Surname, StreetAddress, Zipcode, City, EmailAddress, Username, Password, TelephoneNumber) -> None:
-        self.number = Number
-        self.given_name = GivenName
-        self.surname = Surname
-        self.street_address = StreetAddress
-        self.zipcode = Zipcode
-        self.city = City
-        self.email_address = EmailAddress
-        self.user_name = Username
-        self.password = Password
-        self.telephone_number = TelephoneNumber
+    def __init__(self, number, given_name, surname, street_address, zipcode, city, email_address, username, password, telephone_number) -> None:
+        self.number = number
+        self.given_name = given_name
+        self.surname = surname
+        self.street_address = street_address
+        self.zipcode = zipcode
+        self.city = city
+        self.email_address = email_address
+        self.user_name = username
+        self.password = password
+        self.telephone_number = telephone_number
         

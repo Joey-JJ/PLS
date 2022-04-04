@@ -1,11 +1,9 @@
-from User_account import User_account
+from Person import Person
 
 
-class Library_admin(User_account):
-    def create_account(self):
-        user_name = input('Enter the username: ')
-        password = input('Enter the password: ')
-        return User_account(user_name, password)
+class Library_admin(Person):
+    def __init__(self, number, given_name, surname, street_address, zipcode, city, email_address, username, password, telephone_number) -> None:
+        super().__init__(number, given_name, surname, street_address, zipcode, city, email_address, username, password, telephone_number)
 
     """
     TODO: Functions to add
