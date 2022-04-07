@@ -24,13 +24,14 @@ class Menu:
             for member in Library_accounts.members:
                 if member.username == username and member.password == password:
                     print(f'Logged in as {member.username}')
-                    return 3
+                    return (3, member)
             print('\nInvalid username/password, please try again. To quit the application, enter \'quit\', else press enter')
             quit = input()
             if quit == 'quit':
                 return 0
     
-    def member_section():
+    def member_section(member):
+        print(member.username)
         return 0
 
     def admin_login(admin_account: object) -> int:

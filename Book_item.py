@@ -1,7 +1,6 @@
 from Book import Book
 
 
-class Book_item(object):
-    def __init__(self, book: object) -> None:
-        self.book = book
-        self.current_stock = 3
+class Book_item(Book):
+    def __init__(self, author, country, imageLink, language, link, pages, title, ISBN, year) -> None:
+        super().__init__(author, country, imageLink, language, link, pages, title, ISBN, year)
