@@ -28,7 +28,7 @@ class Menu:
             print('\nInvalid username/password, please try again. To quit the application, enter \'quit\', else press enter')
             quit = input()
             if quit == 'quit':
-                return 0
+                return (0, None)
     
     def member_section(member):
         print(member.username)

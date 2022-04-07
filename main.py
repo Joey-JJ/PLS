@@ -1,6 +1,5 @@
 from Library_accounts import Library_accounts
 from Menu import Menu
-from Catalog import Catalog
 from Member import Member
 from Library_admin import Library_admin
 
