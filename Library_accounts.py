@@ -147,6 +147,3 @@ class Library_accounts:
                 return
             else:
                 print('Please enter a valid option...')
-
-
-    
