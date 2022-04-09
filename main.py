@@ -2,6 +2,7 @@ from Library_accounts import Library_accounts
 from Menu import Menu
 from Member import Member
 from Library_admin import Library_admin
+from Catalog import Catalog
 
 
 def Main() -> None:
@@ -26,4 +27,5 @@ def Main() -> None:
             return
 
 if __name__ == '__main__':
-    Main()
+    # Main()
+    pass
