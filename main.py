@@ -1,4 +1,5 @@
 from Library_accounts import Library_accounts
+from Library_stock import Library_stock
 from Menu import Menu
 from Member import Member
 from Library_admin import Library_admin
@@ -28,4 +29,6 @@ def Main() -> None:
 
 if __name__ == '__main__':
     # Main()
-    pass
+    # Catalog.load_books('Books.json')
+    Library_stock.add_book_item()
+    Library_stock.list_stock()

@@ -42,14 +42,11 @@ class Catalog(object):
 
     def get_book():
         title = input('Enter the title of the book you want to edit: ').lower()
-        book_to_edit = None
         for book in Catalog.books:
             if book.title.lower() == title:
-                book_to_edit = book
                 return book
-        if book_to_edit == None:
-            print('Book not found')
-            return None
+        print('Book not found')
+        return None
 
 
     def add_book():

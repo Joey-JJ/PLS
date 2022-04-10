@@ -1,7 +1,5 @@
-from Book import Book
-
-
-class Book_item(Book):
-    def __init__(self, author, country, imageLink, language, link, pages, title, ISBN, year, id) -> None:
-        super().__init__(author, country, imageLink, language, link, pages, title, ISBN, year)
+class Book_item(object):
+    def __init__(self, book, id) -> None:
+        self.book: object = book
         self.id = id
+        self.loaned_out = False
