@@ -12,6 +12,7 @@ def Main() -> None:
     Library_accounts.members.append(member)
 
     page_number = 0
+
     while(True):
         if page_number == 0:
             page_number = Menu.main_page()
@@ -29,6 +30,7 @@ def Main() -> None:
 
 if __name__ == '__main__':
     # Main()
-    # Catalog.load_books('Books.json')
-    Library_stock.add_book_item()
-    Library_stock.list_stock()
+    Catalog.load_books('Books.json')
+    member = Member('1', 'Joey', 'vd Valk', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx')
+    Library_stock.create_stock()
+    member.loan_book_item()

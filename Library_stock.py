@@ -15,10 +15,22 @@ class Library_stock(object):
                 Library_stock.stock.append(book_item)
                 unique_id+=1
 
-    
+
     def list_stock():
         for book_item in Library_stock.stock:
             print(f'{book_item.id}. {book_item.book.title} by {book_item.book.author}. Loaned out: {book_item.loaned_out}')
+
+
+    def search_book_item():
+        query = input('Enter (part of) the book title or author: ')
+        results = [book_item for book_item in Library_stock.stock if query.lower() in book_item.book.title.lower() or query.lower() in book_item.book.title.lower()]
+        print('The following books were found: ')
+        if len(results) > 0:
+            for res in results:
+                print(f'ID: {res.id}. {res.book.title}" by {res.book.author}. Loaned out: {res.loaned_out}')
+        else:
+            print('None')
+        input('Press \'Enter\' to continue.')
 
     
     def edit_book_item_id():
@@ -38,6 +50,7 @@ class Library_stock(object):
                 book_item.id = new_id
                 print('Changes saved.')
                 break
+
 
     def delete_book_item():
         item = Library_stock.get_book_item()
@@ -83,7 +96,7 @@ class Library_stock(object):
 
     
     def get_book_item():
-        id = input('\nEnter the ID of the book item')
+        id = input('\nEnter the ID of the book item: ')
         for book_item in Library_stock.stock:
             if str(book_item.id) == id:
                 return book_item

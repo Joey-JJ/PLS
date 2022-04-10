@@ -13,11 +13,13 @@ class Library_accounts:
         else:
             print('There are no members at this point.')
 
+
     def search_member(member_number: int) -> object:
         for member in Library_accounts.members:
             if member.number == str(member_number):
                 return member
         return False
+
 
     def load_csv_members(filename: str):
         try:
@@ -37,7 +39,8 @@ class Library_accounts:
         except FileNotFoundError:
             print('File not found, please try again.')
             return 4
-        
+
+
     def add_member() -> None:
         # TODO: SAVE CHANGES TO DATABASSE
         number = input("Enter the number: ")
@@ -56,6 +59,7 @@ class Library_accounts:
         Library_accounts.members.append(new_member)
         print('Member added')
 
+
     def delete_member(member_number: int):
         # TODO: SAVE CHANGES TO DATABASSE
         del_member = Library_accounts.search_member(member_number)
@@ -65,7 +69,8 @@ class Library_accounts:
                 return 4
         print('Could not find member')
         return 4
-    
+
+
     def edit_member(member_number: int) -> None:
         member = Library_accounts.search_member(member_number)
         if not member:
