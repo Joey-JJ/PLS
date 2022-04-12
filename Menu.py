@@ -1,3 +1,4 @@
+from pyrsistent import v
 from Library_accounts import Library_accounts
 
 
@@ -52,10 +53,17 @@ class Menu:
         return 0
 
     def admin_section() -> int:
+        options = "What would you like to do?\n[1] See the current members\n\
+[2] Add a new member\n[3] Edit a member\n\
+[4] Import members from a CSV file\n[5] Add a members account\n\
+[6] Delete a members account\n[7] Check the status of book items currently loaned by members\n\
+[8] Check the catalog\n[9] Add a book to the catalog\n[10] Edit a book from the catalog\n\
+[11] Delete a book from the catalog\n[12] Search a book in the catalog\n[13] Add a list of books (using a json file)\n\
+[14] List book items\n[15] Add a book item\n[16] Edit a book item\n[17] Delete a book item\n\
+[18] Search a book item\n[19] Lend a book item to a member\n[20] Make a back-up of the system\n\
+[21] Restore a back-up of the system\n[22] Log out and go back to the main menu\n')"
         while True:
-            user_input = input(
-                'What would you like to do?\n[1] See the current members\n[2] Add a new member\n[3] Edit a member\n'+
-                '[4] Import members from a CSV file\n[5] Add a members account\n[6] Log out and go back to the main menu\n')
+            user_input = input(options)
             if user_input == '1':
                 Library_accounts.list_members()
                 return  4
@@ -72,7 +80,52 @@ class Menu:
                 Library_accounts.add_member()
                 return 4
             elif user_input == '6':
+                pass
+            elif user_input == '7':
+                pass
+            elif user_input == '8':
+                pass
+            elif user_input == '9':
+                pass
+            elif user_input == '10':
+                pass
+            elif user_input == '11':
+                pass
+            elif user_input == '12':
+                pass
+            elif user_input == '13':
+                pass
+            elif user_input == '14':
+                pass
+            elif user_input == '15':
+                pass
+            elif user_input == '16':
+                pass
+            elif user_input == '17':
+                pass
+            elif user_input == '18':
+                pass
+            elif user_input == '19':
+                pass
+            elif user_input == '20':
+                pass
+            elif user_input == '21':
+                pass
+            elif user_input == '22':
                 print('Logging out ...\n')
                 return 0
             else:
                 print('Please enter a valid number.')
+
+
+"""
+What would you like to do?\n[1] See the current members\n\
+[2] Add a new member\n[3] Edit a member\n\
+[4] Import members from a CSV file\n[5] Add a members account\n\
+[6] Delete a members account\n[7] Check the status of book items currently loaned by members\n\
+[8] Check the catalog\n[9] Add a book to the catalog\n[10] Edit a book from the catalog\n\
+[11] Delete a book from the catalog\n[12] Search a book in the catalog\n[13] Add a list of books (using a json file)\n\
+[14] List book items\n[15] Add a book item\n[16] Edit a book item\n[17] Delete a book item\n\
+[18] Search a book item\n[19] Lend a book item to a member\n[20] Make a back-up of the system\n\
+[21] Restore a back-up of the system\n[22] Log out and go back to the main menu\n')
+"""

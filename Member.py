@@ -1,6 +1,7 @@
 from Library_stock import Library_stock
 from Loan_item import Loan_item
 from Person import Person
+import datetime
 
 
 class Member(Person):
@@ -10,30 +11,50 @@ class Member(Person):
 
 
     def loan_book_item(self):
+        if len(self.loan_items) >= 3:
+            print('You can loan up to 3 books at once. Please return a book before trying to loan again.')
+            return
         Library_stock.list_stock()
-        book_item = Library_stock.get_book_item()
+        id = input('\nEnter the ID of the book item: ')
+        book_found = False
+        for book in Library_stock.stock:
+            if str(book.id) == id and not book.loaned_out:
+                book_item = book
+                book_found = True
+        if not book_found:
+            print('Could not find book item or book already loaned out.')
+            return
         book_item.loaned_out = True
         loan_item = Loan_item(book_item)
         self.loan_items.append(loan_item)
-        day = loan_item.return_due.day
-        month = loan_item.return_due.month
-        year = loan_item.return_due.year
-        date = f'{day}-{month}-{year}'
+        date = loan_item.return_due.strftime('%d/%m%/%Y')
         print(f'Loaned book item. Please return it on: {date}')
 
 
     def return_book_items(self):
-        if len(self.loan_book_item) == 0:
+        if len(self.loan_items) == 0:
             print('There are no books to return.')
             return
+        elif len(self.loan_items) == 1:
+            self.loan_items[0].returned_on = datetime.date.today()
+            if self.loan_items[0].check_fine():
+                print('The book was returned too late.')
+            self.loan_items[0].book_item.loaned_out = False
+            self.loan_items = []
+            print('Returned the book.')
         elif len(self.loan_items) > 1:
             print('Which book do you want to return? Select the number')
             for index, book in enumerate(self.loan_items):
                 print(f'[{index + 1}] {book.book_item.book.title}')
             while True:
                 try:
-                    pass
+                    book_index = int(input('Enter the number here: ')) - 1
                 except:
                     print('Please enter a valid option')
-
-                
+                else:
+                    self.loan_items[book_index].returned_on = datetime.date.today()
+                    if self.loan_items[book_index].check_fine():
+                        print('The book was returned too late.')
+                    self.loan_items[book_index].book_item.loaned_out = False
+                    self.loan_items.remove(self.loan_items[book_index])
+                    print('Returned the book.')

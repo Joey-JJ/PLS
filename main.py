@@ -8,7 +8,7 @@ from Catalog import Catalog
 
 def Main() -> None:
     admin = Library_admin(0, "admin", "", "", "", "", "admin@PLS.com", "admin", "admin123", 0)
-    member = Member('1', 'Joey', 'vd Valk', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx') # TODO: REMOVE
+    member = Member('1', 'test', 'xxx', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx') # TODO: REMOVE
     Library_accounts.members.append(member)
 
     page_number = 0
@@ -29,8 +29,4 @@ def Main() -> None:
             return
 
 if __name__ == '__main__':
-    # Main()
-    Catalog.load_books('Books.json')
-    member = Member('1', 'Joey', 'vd Valk', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx')
-    Library_stock.create_stock()
-    member.loan_book_item()
+    Main()
