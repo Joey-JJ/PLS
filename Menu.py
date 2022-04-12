@@ -108,13 +108,17 @@ class Menu:
                 Library_stock.list_stock()
                 return 4
             elif user_input == '15':
-                pass
+                Library_stock.add_book_item()
+                return 4
             elif user_input == '16':
-                pass
+                Library_stock.edit_book_item_id()
+                return 4
             elif user_input == '17':
-                pass
+                Library_stock.delete_book_item()
+                return 4
             elif user_input == '18':
-                pass
+                Library_stock.search_book_item()
+                return 4
             elif user_input == '19':
                 pass
             elif user_input == '20':

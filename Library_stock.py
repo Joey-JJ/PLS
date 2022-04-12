@@ -89,7 +89,7 @@ class Library_stock(object):
                 for book_item in Library_stock.stock:
                     if book_item.id == new_id:
                         raise ValueError('ID already taken')
-            except:
+            except ValueError:
                 print('ID already taken or invalid input. Please try again.\n')
             else:
                 return new_id
