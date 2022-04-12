@@ -1,5 +1,6 @@
 from Catalog import Catalog
 from Library_accounts import Library_accounts
+from Library_admin import Library_admin
 from Library_stock import Library_stock
 
 
@@ -32,9 +33,26 @@ class Menu:
             if quit == 'quit':
                 return (0, None)
     
+
     def member_section(member):
-        print(member.username)
-        return 0
+        options = 'What would you like to do?\n[1] Check the catalog\n[2] Search a book in the catalog\n\
+            [3] See the list of book items in the library\n[4] Search a book item\nLoan a book item\n\
+                [5] Return a book item\n[6] Return to the main menu'
+        while True:
+            user_input = input(options)
+            if user_input == '1':
+                Catalog.list_books()
+            elif user_input == '2':
+                Catalog.search()
+            elif user_input == '3':
+                Library_stock.list_stock()
+            elif user_input == '4':
+                Library_stock.search_book_item()
+            elif user_input == '5':
+                member.return_book_items()
+            elif user_input == '6':
+                pass
+
 
     def admin_login(admin_account: object) -> int:
         logged_in = False
@@ -84,7 +102,8 @@ class Menu:
                 Library_accounts.delete_member()
                 return 4
             elif user_input == '7':
-                pass
+                Library_admin.check_loan_status()
+                return 4
             elif user_input == '8':
                 Catalog.list_books()
                 return 4

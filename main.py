@@ -29,4 +29,7 @@ def Main() -> None:
             return
 
 if __name__ == '__main__':
-    Main()
+    admin = Library_admin(0, "admin", "", "", "", "", "admin@PLS.com", "admin", "admin123", 0)
+    member = Member('1', 'test', 'xxx', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx') # TODO: REMOVE
+    Library_accounts.members.append(member)
+    Library_admin.lend_to_member()
