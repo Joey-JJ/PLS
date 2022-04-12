@@ -54,17 +54,22 @@ class Library_accounts:
         password = input("Enter the password: ")
         telephone_number = input("Enter the telephone number: ")
 
+        for member in Library_accounts.members:
+            if member.number == number or member.given_name == given_name or member.username == username:
+                print('There is already a user for this information in the system.')
+                return
+
         new_member = Member(number, given_name, surname, street_address, zipcode, city, email_address, username, password, telephone_number)
 
         Library_accounts.members.append(new_member)
         print('Member added')
 
 
-    def delete_member(member_number: int):
+    def delete_member():
         # TODO: SAVE CHANGES TO DATABASSE
-        del_member = Library_accounts.search_member(member_number)
+        del_number = input('Enter the number of the member you want to delete: ')
         for member in Library_accounts.members:
-            if member.number == del_member.number:
+            if member.number == del_number:
                 Library_accounts.members.remove(member)
                 return 4
         print('Could not find member')
