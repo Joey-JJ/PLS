@@ -5,7 +5,15 @@ import csv
 class Library_accounts:
     members = []
     
+    def to_dict():
+        dict = {'members': Library_accounts.__dict__['members']}
+        members = []
+        for member in Library_accounts.__dict__['members']:
+            members.append(member.to_dict())
+        dict['members'] = members
+        return dict
     
+
     def list_members() -> None:
         if len(Library_accounts.members) > 0:
             for member in Library_accounts.members:

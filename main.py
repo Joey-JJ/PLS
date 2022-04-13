@@ -41,6 +41,6 @@ book_item = Book_item(book, 1)
 loan_item = Loan_item(book_item)
 member = Member('1', 'test', 'xxx', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx')
 member.loan_items.append(loan_item)
-print(member.to_dict())
 Library_accounts.members.append(member)
 
+print(Library_accounts.to_dict())
