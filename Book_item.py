@@ -3,3 +3,8 @@ class Book_item(object):
         self.book: object = book
         self.id = id
         self.loaned_out = False
+
+    def to_dict(self) -> dict:
+        dict = self.__dict__
+        dict['book'] = self.book.__dict__
+        return dict

@@ -9,6 +9,15 @@ class Member(Person):
         super().__init__(number, given_name, surname, street_address, zipcode, city, email_address, username, password, telephone_number)
         self.loan_items = []
 
+    
+    def to_dict(self) -> dict:
+        dict = self.__dict__
+        loan_items = []
+        for loan_item in self.loan_items:
+            loan_items.append(loan_item.to_dict())
+        dict['loan_items'] = loan_items
+        return dict
+
 
     def loan_book_item(self):
         if len(self.loan_items) >= 3:

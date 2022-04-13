@@ -35,13 +35,12 @@ class Menu:
     
 
     def member_section(member):
-        options = 'What would you like to do?\n[1] Check the catalog\n[2] Search a book in the catalog\n\
-            [3] See the list of book items in the library\n[4] Search a book item\nLoan a book item\n\
-                [5] Return a book item\n[6] Return to the main menu'
+        options = 'What would you like to do?\n[1] Check the catalog\n[2] Search a book in the catalog\n[3] See the list of book items in the library\n[4] Search a book item\n[5] Loan a book item\n[6] Return a book item\n[7] Return to the main menu\n'
         while True:
             user_input = input(options)
             if user_input == '1':
                 Catalog.list_books()
+                
             elif user_input == '2':
                 Catalog.search()
             elif user_input == '3':
@@ -49,9 +48,12 @@ class Menu:
             elif user_input == '4':
                 Library_stock.search_book_item()
             elif user_input == '5':
-                member.return_book_items()
+                member.loan_book_item()
             elif user_input == '6':
-                pass
+                member.return_book_items()
+            elif user_input == '7':
+                return 0
+            return 3
 
 
     def admin_login(admin_account: object) -> int:
@@ -80,7 +82,7 @@ class Menu:
 [11] Delete a book from the catalog\n[12] Search a book in the catalog\n[13] Add a list of books (using a JSON file)\n\
 [14] List book items\n[15] Add a book item\n[16] Edit a book item\n[17] Delete a book item\n\
 [18] Search a book item\n[19] Lend a book item to a member\n[20] Make a back-up of the system\n\
-[21] Restore a back-up of the system\n[22] Log out and go back to the main menu\n')"
+[21] Restore a back-up of the system\n[22] Log out and go back to the main menu\n"
         while True:
             user_input = input(options)
             if user_input == '1':
