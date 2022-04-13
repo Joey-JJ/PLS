@@ -1,5 +1,6 @@
 from Book import Book
 from Book_item import Book_item
+from JSON import JSON_handler
 from Library_accounts import Library_accounts
 from Library_stock import Library_stock
 from Loan_item import Loan_item
@@ -43,4 +44,4 @@ member = Member('1', 'test', 'xxx', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'membe
 member.loan_items.append(loan_item)
 Library_accounts.members.append(member)
 
-print(Library_accounts.to_dict())
+JSON_handler.save_file(Library_accounts.to_dict(), 'aaaa')
