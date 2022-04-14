@@ -10,9 +10,6 @@ from Catalog import Catalog
 def Main() -> None:
     System.load_all_data()
     admin = Library_admin(0, "admin", "", "", "", "", "admin@PLS.com", "admin", "admin123", 0)
-    member = Member('1', 'test', 'xxx', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx') # TODO: REMOVE
-    Library_accounts.members.append(member)
-
     page_number = 0
 
     while(True):
@@ -20,7 +17,7 @@ def Main() -> None:
             page_number = Menu.main_page()
         elif page_number == 1:
             pagenumber_and_member = Menu.members_login()
-            page_number = pagenumber_and_member[0] 
+            page_number = pagenumber_and_member[0]
         elif page_number == 2:
             page_number = Menu.admin_login(admin)
         elif page_number == 3:
@@ -31,9 +28,5 @@ def Main() -> None:
             return
 
 
-# if __name__ == '__main__':
-#     Main()
-
-
-System.load_catalog_data()
-Catalog.list_books()
+if __name__ == '__main__':
+    Main()

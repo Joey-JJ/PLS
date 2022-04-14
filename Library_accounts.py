@@ -1,3 +1,4 @@
+from Library_system import System
 from Member import Member
 import csv
 
@@ -44,6 +45,7 @@ class Library_accounts:
                         Library_accounts.members.append(
                             Member(member_data[0], member_data[1], member_data[2], member_data[3], member_data[4], member_data[5], member_data[6], member_data[7], member_data[8], member_data[9]))
                 print('Members saved\n')
+                System.save_all_data()
                 return 4
         except FileNotFoundError:
             print('File not found, please try again.')

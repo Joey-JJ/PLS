@@ -2,6 +2,7 @@ from Catalog import Catalog
 from Library_accounts import Library_accounts
 from Library_admin import Library_admin
 from Library_stock import Library_stock
+from Library_system import System
 
 
 class Menu:
@@ -40,7 +41,6 @@ class Menu:
             user_input = input(options)
             if user_input == '1':
                 Catalog.list_books()
-                
             elif user_input == '2':
                 Catalog.search()
             elif user_input == '3':
@@ -49,8 +49,10 @@ class Menu:
                 Library_stock.search_book_item()
             elif user_input == '5':
                 member.loan_book_item()
+                System.save_all_data()
             elif user_input == '6':
                 member.return_book_items()
+                System.save_all_data()
             elif user_input == '7':
                 return 0
             return 3
@@ -90,18 +92,22 @@ class Menu:
                 return  4
             elif user_input == '2':
                 Library_accounts.add_member()
+                System.save_all_data()
                 return 4
             elif user_input == '3':
                 Library_accounts.edit_member('1')
+                System.save_all_data()
                 return 4
             elif user_input == '4':
                 filename = input('Enter the full name of the CSV file: ')
                 return Library_accounts.load_csv_members(filename)
             elif user_input == '5':
                 Library_accounts.add_member()
+                System.save_all_data()
                 return 4
             elif user_input == '6':
                 Library_accounts.delete_member()
+                System.save_all_data()
                 return 4
             elif user_input == '7':
                 Library_admin.check_loan_status()
@@ -111,41 +117,60 @@ class Menu:
                 return 4
             elif user_input == '9':
                 Catalog.add_book()
+                System.save_all_data()
                 return 4
             elif user_input == '10':
-                Catalog.get_book()
+                Catalog.edit_book()
+                System.save_all_data()
                 return 4
             elif user_input == '11':
                 Catalog.delete_book()
+                System.save_all_data()
                 return 4
             elif user_input == '12':
                 Catalog.search()
+                System.save_all_data()
                 return 4
             elif user_input == '13':
                 file_name = input('Please enter the name of the JSON file: ')
                 Catalog.load_books(file_name)
+                System.save_all_data()
                 return 4
             elif user_input == '14':
                 Library_stock.list_stock()
                 return 4
             elif user_input == '15':
                 Library_stock.add_book_item()
+                System.save_all_data()
                 return 4
             elif user_input == '16':
                 Library_stock.edit_book_item_id()
+                System.save_all_data()
                 return 4
             elif user_input == '17':
                 Library_stock.delete_book_item()
+                System.save_all_data()
                 return 4
             elif user_input == '18':
                 Library_stock.search_book_item()
+                System.save_all_data()
                 return 4
             elif user_input == '19':
-                pass
+                Library_admin.lend_to_member()
+                System.save_all_data()
+                return 4
             elif user_input == '20':
-                pass
+                System.make_back_up()
+                print('Made the back-up')
+                return 4
             elif user_input == '21':
-                pass
+                file_name = input('Enter the name of the back-up file: ')
+                try:
+                    System.restore_back_up(file_name)
+                    System.save_all_data()
+                except:
+                    print('File not found, try again.')
+                return 4
             elif user_input == '22':
                 print('Logging out ...\n')
                 return 0
