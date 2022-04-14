@@ -6,6 +6,14 @@ class Library_stock(object):
     # Stock is a list of book items that are currrently in the library
     stock = []
 
+    def to_dict():
+        dict = {'stock': Library_stock.__dict__['stock']}
+        book_items = []
+        for book_item in dict['stock']:
+            book_items.append(book_item.to_dict())
+        dict['stock'] = book_items
+        return dict
+
     def create_stock():
         """Creates 3 book items per book in the catalog. Also assign unique ID."""
         unique_id = 1
