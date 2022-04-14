@@ -5,6 +5,14 @@ from Book import Book
 class Catalog(object):
     books = []
 
+    def to_dict():
+        dict = {'books': Catalog.__dict__['books']}
+        books = []
+        for book in dict['books']:
+            books.append(book.__dict__)
+        dict['books'] = books
+        return dict
+
     def load_books(filename: str):
         try:
             with open(filename, 'r') as f:
@@ -27,6 +35,12 @@ class Catalog(object):
                     book_properties[7],
                     book_properties[8]))
 
+
+    def check_duplicate(book_to_check: object) -> bool:
+        for book in Catalog.books:
+            if book.title == book_to_check.title:
+                return True
+        return False
 
     def list_books():
         for index, book in enumerate(Catalog.books):
