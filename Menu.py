@@ -100,7 +100,9 @@ class Menu:
                 return 4
             elif user_input == '4':
                 filename = input('Enter the full name of the CSV file: ')
-                return Library_accounts.load_csv_members(filename)
+                Library_accounts.load_csv_members(filename)
+                System.save_all_data()
+                return 4
             elif user_input == '5':
                 Library_accounts.add_member()
                 System.save_all_data()
