@@ -11,6 +11,11 @@ class Loan_item(object):
     
     def to_dict(self) -> dict:
         dict = self.__dict__
+        date_format = '%d/%m/%Y'
+        dict['date_loaned'] = dict['date_loaned'].strftime(date_format)
+        dict['return_due'] = dict['return_due'].strftime(date_format)
+        if dict['returned_on'] != None:
+            dict['returned_on'] = dict['returned_on'].strftime(date_format)
         dict['book_item'] = self.book_item.to_dict()
         return dict
 

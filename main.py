@@ -8,6 +8,7 @@ from Menu import Menu
 from Member import Member
 from Library_admin import Library_admin
 from Catalog import Catalog
+import datetime as dt
 
 
 def Main() -> None:
@@ -36,12 +37,22 @@ def Main() -> None:
 #     Main()
 
 # BACKUP: Library accounts -> Member -> Loan item -> Book item -> Book
+def load_members_data():
+    dict = JSON_handler.load_file('member_data')
+    for index, member in enumerate(dict['members']):
+        Library_accounts.members.append(Member(member['number'], member['given_name'], member['surname'], 
+        member['street_address'], member['zipcode'], member['city'], member['email_address'], 
+        member['username'], member['password'], member['telephone_number']))
+        for index2, loan_item in enumerate(member['loan_items']):
+            Library_accounts.members[index].loan_items.append(Loan_item(Book_item(Book(loan_item['book_item']['book']['author'], loan_item['book_item']['book']['country'], 
+            loan_item['book_item']['book']['imageLink'], loan_item['book_item']['book']['language'], loan_item['book_item']['book']['link'], 
+            loan_item['book_item']['book']['pages'], loan_item['book_item']['book']['title'], loan_item['book_item']['book']['ISBN'], 
+            loan_item['book_item']['book']['year']), loan_item['book_item']['id'])))
+            Library_accounts.members[index].loan_items[index2].date_loaned = dt.datetime.strptime(loan_item['date_loaned'], '%d/%m/%Y').date()
+            Library_accounts.members[index].loan_items[index2].return_due = dt.datetime.strptime(loan_item['return_due'], '%d/%m/%Y').date()
 
-book = Book("test", "test", "test", "test", "test", "test", "test", "test", "test")
-book_item = Book_item(book, 1)
-loan_item = Loan_item(book_item)
-member = Member('1', 'test', 'xxx', 'xxx', 'xxx', 'xxx', 'xxx', 'member', 'member123', 'xxx')
-member.loan_items.append(loan_item)
-Library_accounts.members.append(member)
+def save_members_data():
+    JSON_handler.save_file('member_data', Library_accounts.to_dict())
 
-JSON_handler.save_file(Library_accounts.to_dict(), 'aaaa')
+
+print(Library_accounts.to_dict())

@@ -1,9 +1,11 @@
-import datetime
+import datetime as dt
 
 
-d1 = datetime.date.today()
-d2 = datetime.date(2022, 4, 12)
+date = dt.datetime.now().date()
+format = '%d-%m-%Y'
 
-a = datetime.date.strftime('20220312', '%d-%m-%Y')
-
-print(a)
+# Converting to string
+date_str = date.strftime(format)
+# Converting to date object
+date2 = dt.datetime.strptime(date_str, format).date()
+print(date2)

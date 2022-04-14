@@ -1,0 +1,38 @@
+{
+    "members": [
+        {
+            "number": "1",
+            "given_name": "test",
+            "surname": "xxx",
+            "street_address": "xxx",
+            "zipcode": "xxx",
+            "city": "xxx",
+            "email_address": "xxx",
+            "username": "member",
+            "password": "member123",
+            "telephone_number": "xxx",
+            "loan_items": [
+                {
+                    "book_item": {
+                        "book": {
+                            "author": "test",
+                            "country": "test",
+                            "imageLink": "test",
+                            "language": "test",
+                            "link": "test",
+                            "pages": "test",
+                            "title": "test",
+                            "ISBN": "test",
+                            "year": "test"
+                        },
+                        "id": 1,
+                        "loaned_out": false
+                    },
+                    "date_loaned": "14/04/2022",
+                    "return_due": "14/05/2022",
+                    "returned_on": null
+                }
+            ]
+        }
+    ]
+}
