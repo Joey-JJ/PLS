@@ -33,6 +33,12 @@ class Member(Person):
         if not book_found:
             print('Could not find book item or book already loaned out.')
             return
+
+        for loan_item in self.loan_items:
+            if loan_item.book_item.book.title == book_item.book.title:
+                print('You already have this book.')
+                return
+        
         book_item.loaned_out = True
         loan_item = Loan_item(book_item)
         self.loan_items.append(loan_item)

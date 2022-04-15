@@ -1,4 +1,5 @@
 import json
+from tabnanny import check
 from Book import Book
 
 
@@ -24,7 +25,7 @@ class Catalog(object):
                 book_properties = []
                 for value in book.values():
                     book_properties.append(value)
-                Catalog.books.append(Book(
+                new_book = Book(
                     book_properties[0], 
                     book_properties[1],
                     book_properties[2],
@@ -33,7 +34,9 @@ class Catalog(object):
                     book_properties[5],
                     book_properties[6],
                     book_properties[7],
-                    book_properties[8]))
+                    book_properties[8])
+                if not Catalog.check_duplicate(new_book):
+                    Catalog.books.append(Book(new_book))
 
 
     def check_duplicate(book_to_check: object) -> bool:

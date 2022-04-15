@@ -23,7 +23,8 @@ class Library_accounts:
             print('There are no members at this point.')
 
 
-    def search_member(member_number: int) -> object:
+    def search_member() -> object:
+        member_number = input('Enter the number of the member: ')
         for member in Library_accounts.members:
             if member.number == str(member_number):
                 return member
@@ -41,8 +42,13 @@ class Library_accounts:
                             break
                         member_data.append(value)
                     if len(member_data) > 0:
-                        Library_accounts.members.append(
-                            Member(member_data[0], member_data[1], member_data[2], member_data[3], member_data[4], member_data[5], member_data[6], member_data[7], member_data[8], member_data[9]))
+                        new_member = Member(member_data[0], member_data[1], member_data[2], member_data[3], member_data[4], member_data[5], member_data[6], member_data[7], member_data[8], member_data[9])
+                        append = True
+                        for mem in Library_accounts.members:
+                            if mem.given_name == new_member.given_name and mem.surname == new_member.surname:
+                                append = False
+                        if append:
+                            Library_accounts.members.append(new_member)
                 print('Members saved\n')
                 return 4
         except FileNotFoundError:
@@ -85,8 +91,8 @@ class Library_accounts:
         return 4
 
 
-    def edit_member(member_number: int) -> None:
-        member = Library_accounts.search_member(member_number)
+    def edit_member() -> None:
+        member = Library_accounts.search_member()
         if not member:
             print('Member was not found')
             return

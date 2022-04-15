@@ -78,13 +78,13 @@ class Menu:
     def admin_section() -> int:
         options = "What would you like to do?\n[1] See the current members\n\
 [2] Add a new member\n[3] Edit a member\n\
-[4] Import members from a CSV file\n[5] Add a members account\n\
-[6] Delete a members account\n[7] Check the status of book items currently loaned by members\n\
-[8] Check the catalog\n[9] Add a book to the catalog\n[10] Edit a book from the catalog\n\
-[11] Delete a book from the catalog\n[12] Search a book in the catalog\n[13] Add a list of books (using a JSON file)\n\
-[14] List book items\n[15] Add a book item\n[16] Edit a book item\n[17] Delete a book item\n\
-[18] Search a book item\n[19] Lend a book item to a member\n[20] Make a back-up of the system\n\
-[21] Restore a back-up of the system\n[22] Log out and go back to the main menu\n"
+[4] Import members from a CSV file\n\
+[5] Delete a members account\n[6] Check the status of book items currently loaned by members\n\
+[7] Check the catalog\n[8] Add a book to the catalog\n[9] Edit a book from the catalog\n\
+[10] Delete a book from the catalog\n[11] Search a book in the catalog\n[12] Add a list of books (using a JSON file)\n\
+[13] List book items\n[14] Add a book item\n[15] Edit a book item\n[16] Delete a book item\n\
+[17] Search a book item\n[18] Lend a book item to a member\n[19] Make a back-up of the system\n\
+[20] Restore a back-up of the system\n[21] Log out and go back to the main menu\n"
         while True:
             user_input = input(options)
             if user_input == '1':
@@ -95,7 +95,7 @@ class Menu:
                 System.save_all_data()
                 return 4
             elif user_input == '3':
-                Library_accounts.edit_member('1')
+                Library_accounts.edit_member()
                 System.save_all_data()
                 return 4
             elif user_input == '4':
@@ -104,68 +104,64 @@ class Menu:
                 System.save_all_data()
                 return 4
             elif user_input == '5':
-                Library_accounts.add_member()
-                System.save_all_data()
-                return 4
-            elif user_input == '6':
                 Library_accounts.delete_member()
                 System.save_all_data()
                 return 4
-            elif user_input == '7':
+            elif user_input == '6':
                 Library_admin.check_loan_status()
                 return 4
-            elif user_input == '8':
+            elif user_input == '7':
                 Catalog.list_books()
                 return 4
-            elif user_input == '9':
+            elif user_input == '8':
                 Catalog.add_book()
                 System.save_all_data()
                 return 4
-            elif user_input == '10':
+            elif user_input == '9':
                 Catalog.edit_book()
                 System.save_all_data()
                 return 4
-            elif user_input == '11':
+            elif user_input == '10':
                 Catalog.delete_book()
                 System.save_all_data()
                 return 4
-            elif user_input == '12':
+            elif user_input == '11':
                 Catalog.search()
                 System.save_all_data()
                 return 4
-            elif user_input == '13':
+            elif user_input == '12':
                 file_name = input('Please enter the name of the JSON file: ')
                 Catalog.load_books(file_name)
                 System.save_all_data()
                 return 4
-            elif user_input == '14':
+            elif user_input == '13':
                 Library_stock.list_stock()
                 return 4
-            elif user_input == '15':
+            elif user_input == '14':
                 Library_stock.add_book_item()
                 System.save_all_data()
                 return 4
-            elif user_input == '16':
+            elif user_input == '15':
                 Library_stock.edit_book_item_id()
                 System.save_all_data()
                 return 4
-            elif user_input == '17':
+            elif user_input == '16':
                 Library_stock.delete_book_item()
                 System.save_all_data()
                 return 4
-            elif user_input == '18':
+            elif user_input == '17':
                 Library_stock.search_book_item()
                 System.save_all_data()
                 return 4
-            elif user_input == '19':
+            elif user_input == '18':
                 Library_admin.lend_to_member()
                 System.save_all_data()
                 return 4
-            elif user_input == '20':
+            elif user_input == '19':
                 System.make_back_up()
                 print('Made the back-up')
                 return 4
-            elif user_input == '21':
+            elif user_input == '20':
                 file_name = input('Enter the name of the back-up file: ')
                 try:
                     System.restore_back_up(file_name)
@@ -173,7 +169,7 @@ class Menu:
                 except:
                     print('File not found, try again.')
                 return 4
-            elif user_input == '22':
+            elif user_input == '21':
                 print('Logging out ...\n')
                 return 0
             else:

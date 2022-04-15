@@ -23,6 +23,15 @@ class System(object):
         System.load_catalog_data()
 
 
+    def reset_json_files():
+        with open('member_data.json', 'w') as f:
+            f.write('{"members": []}')
+        with open('catalog_data.json', 'w') as f:
+            f.write('{"books": []}')
+        with open('lib_stock_data.json', 'w') as f:
+            f.write('{"stock": []}')
+
+
     def make_back_up():
         members_data = JSON_handler.load_file('member_data')
         catalog_data = JSON_handler.load_file('catalog_data')
@@ -34,7 +43,8 @@ class System(object):
         time.sleep(1)
 
 
-    def restore_back_up(file_name='backup_test.json'):
+    def restore_back_up(file_name):
+        System.reset_json_files()
         back_up = JSON_handler.load_file(file_name)
         System.load_members_data(back_up['members data'])
         System.load_catalog_data(back_up['catalog data'])
