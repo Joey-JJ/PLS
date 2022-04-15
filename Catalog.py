@@ -36,7 +36,7 @@ class Catalog(object):
                     book_properties[7],
                     book_properties[8])
                 if not Catalog.check_duplicate(new_book):
-                    Catalog.books.append(Book(new_book))
+                    Catalog.books.append(new_book)
 
 
     def check_duplicate(book_to_check: object) -> bool:
