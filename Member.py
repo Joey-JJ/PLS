@@ -11,7 +11,7 @@ class Member(Person):
 
     
     def to_dict(self) -> dict:
-        dict = self.__dict__
+        dict = self.__dict__.copy()
         loan_items = []
         for loan_item in self.loan_items:
             loan_items.append(loan_item.to_dict())
@@ -36,7 +36,7 @@ class Member(Person):
         book_item.loaned_out = True
         loan_item = Loan_item(book_item)
         self.loan_items.append(loan_item)
-        date = loan_item.return_due.strftime('%d/%m%/%Y')
+        date = loan_item.return_due.strftime('%d-%m-%Y')
         print(f'Loaned book item. Please return it on: {date}')
 
 
@@ -49,6 +49,9 @@ class Member(Person):
             if self.loan_items[0].check_fine():
                 print('The book was returned too late.')
             self.loan_items[0].book_item.loaned_out = False
+            for book_item in Library_stock.stock:
+                if book_item.id == self.loan_items[0].book_item.id:
+                    book_item.loaned_out = False 
             self.loan_items = []
             print('Returned the book.')
         elif len(self.loan_items) > 1:
@@ -64,6 +67,9 @@ class Member(Person):
                     self.loan_items[book_index].returned_on = datetime.date.today()
                     if self.loan_items[book_index].check_fine():
                         print('The book was returned too late.')
-                    self.loan_items[book_index].book_item.loaned_out = False
+                    for book_item in Library_stock.stock:
+                        if book_item.id == self.loan_items[book_index].book_item.id:
+                            book_item.loaned_out = False 
                     self.loan_items.remove(self.loan_items[book_index])
                     print('Returned the book.')
+                    break

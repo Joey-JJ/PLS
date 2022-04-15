@@ -1,3 +1,6 @@
+from Catalog import Catalog
+from Library_accounts import Library_accounts
+from Library_stock import Library_stock
 from Library_system import System
 from Menu import Menu
 from Library_admin import Library_admin

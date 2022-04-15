@@ -9,7 +9,7 @@ class Catalog(object):
         dict = {'books': Catalog.__dict__['books']}
         books = []
         for book in dict['books']:
-            books.append(book.__dict__)
+            books.append(book.__dict__.copy())
         dict['books'] = books
         return dict
 

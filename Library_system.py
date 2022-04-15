@@ -12,8 +12,8 @@ from Member import Member
 
 class System(object):
     def save_all_data():
-        System.save_members_data()
         System.save_library_stock_data()
+        System.save_members_data()
         System.save_catalog_data()
     
 
@@ -60,7 +60,9 @@ class System(object):
             book_item['book']['ISBN'], book_item['book']['year'])
             if not Catalog.check_duplicate(book):
                 Catalog.books.append(book)
-            Library_stock.stock.append(Book_item(book, book_item['id']))
+            item = Book_item(book, book_item['id'])
+            item.loaned_out = book_item['loaned_out']
+            Library_stock.stock.append(item)
 
 
     def save_library_stock_data():
@@ -73,13 +75,16 @@ class System(object):
             member['street_address'], member['zipcode'], member['city'], member['email_address'], 
             member['username'], member['password'], member['telephone_number']))
             for index2, loan_item in enumerate(member['loan_items']):
-                Library_accounts.members[index].loan_items.append(Loan_item(Book_item(Book(loan_item['book_item']['book']['author'], loan_item['book_item']['book']['country'], 
+                book = Book(loan_item['book_item']['book']['author'], loan_item['book_item']['book']['country'], 
                 loan_item['book_item']['book']['imageLink'], loan_item['book_item']['book']['language'], loan_item['book_item']['book']['link'], 
                 loan_item['book_item']['book']['pages'], loan_item['book_item']['book']['title'], loan_item['book_item']['book']['ISBN'], 
-                loan_item['book_item']['book']['year']), loan_item['book_item']['id'])))
+                loan_item['book_item']['book']['year'])
+                book_item = Book_item(book, loan_item['book_item']['id'])
+                book_item.loaned_out = loan_item['book_item']['loaned_out']
+                Library_accounts.members[index].loan_items.append(Loan_item(book_item))
                 Library_accounts.members[index].loan_items[index2].date_loaned = dt.datetime.strptime(loan_item['date_loaned'], '%d/%m/%Y').date()
                 Library_accounts.members[index].loan_items[index2].return_due = dt.datetime.strptime(loan_item['return_due'], '%d/%m/%Y').date()
 
 
     def save_members_data():
-        JSON_handler.save_file('member_data', Library_accounts.to_dict())
+        JSON_handler.save_file(Library_accounts.to_dict(), 'member_data')
